@@ -9,11 +9,11 @@ export default function Index() {
           <a>Go to Example Page</a>
         </Link>
       </div>
-      <div>
+      {/* <div>
         <Link href="/details">
           <a>Go to Details Page</a>
         </Link>
-      </div>
+      </div> */}
       <div>
         <Link href="/list">
           <a>Go to List Page</a>

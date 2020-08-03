@@ -1,7 +1,8 @@
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
+import { NextPage } from 'next';
 
-export default function Details({ ownersList }) {
+const List: NextPage<OwnerVehicles> = ({ ownersList }) => {
   // Using this operates on Client Side, Not SSR
   // const [owners, setOwners] = useState([]);
   // useEffect(() => {
@@ -15,7 +16,7 @@ export default function Details({ ownersList }) {
 
   return (
     <div>
-      {ownersList.map((e, i) => (
+      {ownersList?.map((e, i) => (
         <div key={i}>
           <Link href="/[vehicle]/[person]" as={`/${e.vehicle}/${e.ownerName}`}>
             <a>
@@ -26,13 +27,15 @@ export default function Details({ ownersList }) {
       ))}
     </div>
   );
-}
+};
 
-Details.getInitialProps = async () => {
+List.getInitialProps = async () => {
   const res = await fetch('http://localhost:3000/api/vehicles');
-  const data = await res.json();
+  const data: OwnersList[] | undefined = await res.json();
 
   return {
     ownersList: data,
   };
 };
+
+export default List;

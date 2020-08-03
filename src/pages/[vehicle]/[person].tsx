@@ -1,14 +1,16 @@
 import { useRouter } from 'next/router';
+import { Context } from 'vm';
+import { NextPageContext } from 'next';
 
-export default function Person({ ownersList }) {
+export default function Person({ ownersList }: OwnerVehicles) {
   // const router = useRouter();
 
-  return <h2>{ownersList[0].details}</h2>;
+  return <h2>{ownersList?.[0].details}</h2>;
 }
 
-Person.getInitialProps = async (ctx) => {
+Person.getInitialProps = async (ctx: NextPageContext) => {
   const res = await fetch('http://localhost:3000/api/vehicles');
-  const data = await res.json();
+  const data: OwnersList[] = await res.json();
 
   const {
     query: { person, vehicle },
