@@ -14,6 +14,11 @@ export default function Index() {
           <a>Go to Details Page</a>
         </Link>
       </div>
+      <div>
+        <Link href="/list">
+          <a>Go to List Page</a>
+        </Link>
+      </div>
     </div>
   );
 }
