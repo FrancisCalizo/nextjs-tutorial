@@ -1,9 +1,15 @@
 import Link from 'next/link';
+import styled from 'styled-components';
+
+const Title = styled.h1`
+  font-size: 36px;
+  color: red;
+`;
 
 export default function Index() {
   return (
     <div>
-      <h1>Index Page</h1>
+      <Title>Index Page</Title>
       <div>
         <Link href="/example">
           <a>Go to Example Page</a>
